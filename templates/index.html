@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DPI Detector</title>
+</head>
+<body>
+
+    <h2>DPI Packet Detector</h2>
+
+    <form action="/predict" method="post">
+        Packet Size:
+        <input type="text" name="packet_size"><br><br>
+
+        Protocol:
+        <input type="text" name="protocol"><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+
+</body>
+</html>
