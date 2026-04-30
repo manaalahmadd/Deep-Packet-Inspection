@@ -1,2 +1,29 @@
-# Deep-Packet-Inspection
-Deep packet inspection (DPI) is a type of data processing that inspects in detail the data (packets) being sent over a computer network,and may take actions such as alerting, blocking, re-routing, or logging them accordingly. DPI is widely used for network security, traffic management, and monitoring.
+# DPI AI Project
+
+## Overview
+
+This project implements a Deep Packet Inspection (DPI) system using Machine Learning to classify network traffic as Normal or Suspicious.
+
+## Features
+
+* Packet classification using Random Forest
+* Interactive Streamlit dashboard
+* Real-time packet simulation
+* Alert system for suspicious traffic
+
+## Tech Stack
+
+* Python
+* Pandas
+* Scikit-learn
+* Streamlit
+
+##Live Demo
+
+Try the live application here:
+
+[https://your-app.streamlit.app](https://deep-packet-inspection-1511.streamlit.app/)
+
+## Author
+
+Manaal Ahmad
