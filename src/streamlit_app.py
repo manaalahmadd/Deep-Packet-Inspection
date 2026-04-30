@@ -11,8 +11,6 @@ st.set_page_config(page_title="DPI Detector", layout="centered")
 st.title("DPI Packet Detection System")
 st.markdown("Real-time network packet analysis using Machine Learning")
 
-st.title("DPI Packet Detector")
-
 # Load model
 model = joblib.load("models/random_forest_model.pkl")
 
