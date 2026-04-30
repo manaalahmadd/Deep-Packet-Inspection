@@ -74,6 +74,8 @@ st.subheader("Live Packet Simulation")
 
 if st.button("Start Simulation"):
     protocol_map = {1: "TCP", 2: "UDP", 3: "ICMP"}
+    normal_count = 0
+    suspicious_count = 0
 
     for i in range(10):  # 10 packets simulate
         packet_size = random.randint(40, 1800)
@@ -88,6 +90,11 @@ if st.button("Start Simulation"):
 
         prediction = model.predict(data)[0]
 
+        if prediction == "Normal":
+            normal_count += 1
+        else:
+            suspicious_count += 1
+
         st.write(f"Packet {i+1}")
         st.write(f"Size: {packet_size}")
         st.write(f"Protocol: {protocol_map[protocol_num]}")
@@ -95,3 +102,6 @@ if st.button("Start Simulation"):
         st.write("------")
 
         time.sleep(1)
+
+    st.write(f"Total Normal Packets: {normal_count}")
+    st.write(f"Total Suspicious Packets: {suspicious_count}")
