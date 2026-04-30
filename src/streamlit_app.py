@@ -11,6 +11,7 @@ st.set_page_config(page_title="DPI Detector", layout="centered")
 st.title("DPI Packet Detection System")
 st.markdown("Real-time network packet analysis using Machine Learning")
 
+
 # Load model
 model = joblib.load("models/random_forest_model.pkl")
 
@@ -39,25 +40,35 @@ if st.button("Predict"):
 
 st.subheader("Data Visualization")
 
-# Sample data (ya tum CSV se bhi le sakte ho)
+# Sample data
 data = pd.read_csv("data/traffic.csv")
 
-# Packet size graph
+# Packet size graph with selected input marker
 st.write("Packet Size Distribution")
-plt.figure()
-plt.hist(data["packet_size"])
-st.pyplot(plt)
+fig, ax = plt.subplots()
+ax.hist(data["packet_size"], bins=20, color="skyblue", edgecolor="black", alpha=0.75)
+ax.axvline(packet_size, color="red", linestyle="--", linewidth=2, label=f"Selected size: {packet_size}")
+ax.set_xlabel("Packet size")
+ax.set_ylabel("Count")
+ax.set_title("Packet Size Distribution")
+ax.legend()
+st.pyplot(fig)
 
 # Protocol count
 st.write("Protocol Usage")
-protocol_counts = data["protocol"].value_counts()
-plt.figure()
-protocol_counts.plot(kind="bar")
-st.pyplot(plt)
+protocol_counts = data["protocol"].value_counts().reindex(["TCP", "UDP", "ICMP"]).fillna(0)
+fig2, ax2 = plt.subplots()
+protocol_counts.plot(kind="bar", ax=ax2, color=["#1f77b4", "#ff7f0e", "#2ca02c"])
+ax2.set_xlabel("Protocol")
+ax2.set_ylabel("Count")
+ax2.set_title("Protocol Usage")
+st.pyplot(fig2)
 
 st.write("Protocol Pie Chart")
-protocol_counts.plot(kind="pie", autopct="%1.1f%%")
-st.pyplot(plt)
+fig3, ax3 = plt.subplots()
+protocol_counts.plot(kind="pie", ax=ax3, autopct="%1.1f%%", startangle=90, ylabel="")
+ax3.set_title("Protocol Distribution")
+st.pyplot(fig3)
 
 st.subheader("Live Packet Simulation")
 
