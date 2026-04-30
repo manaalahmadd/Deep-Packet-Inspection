@@ -8,7 +8,7 @@ import streamlit as st
 
 st.set_page_config(page_title="DPI Detector", layout="centered")
 
-st.title("DPI Packet Detection System")
+st.title("AI-Based Deep Packet Inspection System")
 st.markdown("Real-time network packet analysis using Machine Learning")
 
 
